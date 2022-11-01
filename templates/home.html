@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    {% if user.age %}
+        You are {{user.age}} years old
+    {% endif %}
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+{% else %}
+    <p>You are not logged in, <a href="{% url 'login' %}">Login Here</a></p>
+    <p>Need an account? <a href="{% url 'signup' %}">Register Here</a></p>
+{% endif %}
+    
+{% endblock content %}
